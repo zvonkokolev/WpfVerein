@@ -28,7 +28,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Grid.Row="0">Index:</Label>
-            <TextBox x:Name="tbIndex" Grid.Column="1" Grid.Row="0" Text="{Binding Path=Index}"></TextBox>
+            <TextBox x:Name="tbIndex" Grid.Column="1" Grid.Row="0" Text="{Binding Path=Index}" IsReadOnly="True"></TextBox>
          
             <Label Grid.Column="0" Grid.Row="1">Vorname:</Label>
             <TextBox x:Name="tbFirstname" Grid.Column="1" Grid.Row="1" Text="{Binding Path=Firstname}"></TextBox>

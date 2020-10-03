@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
+using System.Windows.Documents;
 using WpfVerein.Model;
+using WpfVerein.Utils;
 
 namespace WpfVerein.CRUD
 {
@@ -9,10 +13,12 @@ namespace WpfVerein.CRUD
 	/// </summary>
 	public partial class AddMemberWindow : Window
 	{
+		private CsvWriter _csvWriter;
+		private string path = MyString.GetFullNameInApplicationTree("output.csv");
 		private Member newCd;
 		private static int _indexer = 14;
 		private readonly Member _memberToEdit;
-
+		private List<string> _line;
 		public AddMemberWindow(Member memberToEdit)
 		{
 			_memberToEdit = memberToEdit;
@@ -52,6 +58,16 @@ namespace WpfVerein.CRUD
 			if (_memberToEdit == null)
 			{
 				Repository.GetInstance().AddMember(newCd);
+				_line = new List<string>
+				{
+					newCd.Name,
+					newCd.Email,
+					newCd.Phone
+				};
+				// if member is new one, will be appended into csv file
+				_csvWriter = new CsvWriter(path, ";");
+				_csvWriter.Write(_line.ElementAt(0), _line.ElementAt(1), _line.ElementAt(2));
+				_csvWriter.Flush();
 			}
 			else
 			{

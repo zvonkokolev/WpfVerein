@@ -99,9 +99,26 @@ namespace WpfVerein.Model
 				)
 				.FirstOrDefault()
 				;
-			returnCd.Lastname = newMember.Lastname;
-			returnCd.Firstname = newMember.Firstname;
-			returnCd.Index = newMember.Index;
+			if (!string.IsNullOrWhiteSpace(newMember.Lastname))
+			{
+				returnCd.Lastname = newMember.Lastname;
+			}
+			if (!string.IsNullOrWhiteSpace(newMember.Firstname))
+			{
+				returnCd.Firstname = newMember.Firstname;
+			}
+			if (!string.IsNullOrWhiteSpace(newMember.Email))
+			{
+				returnCd.Email = newMember.Email;
+			}
+			if (!string.IsNullOrWhiteSpace(newMember.Phone))
+			{
+				returnCd.Phone = newMember.Phone;
+			}
+			if (newMember.BirthDay != null || newMember.BirthDay != DateTime.Now)
+			{
+				returnCd.BirthDay = newMember.BirthDay;
+			}
 		}
 	}
 }

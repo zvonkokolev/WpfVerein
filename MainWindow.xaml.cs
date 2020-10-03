@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WpfVerein.CRUD;
 using WpfVerein.Model;
+using WpfVerein.Utils;
 
 namespace WpfVerein
 {
@@ -13,6 +15,8 @@ namespace WpfVerein
 	{
 		private List<Member> _members;
 		private Repository rep;
+		private CsvWriter _csvWriter;
+		private string path = MyString.GetFullNameInApplicationTree("output.csv");
 
 		public MainWindow()
 		{
@@ -23,12 +27,19 @@ namespace WpfVerein
 		private void MainWindow_Loaded(object sender, RoutedEventArgs e)
 		{
 			rep = Repository.GetInstance();
-			_members = rep.GetAllMembers();
+			_members = rep.GetAllMembers();		
 			lbxCds.ItemsSource = _members;
+			// prints members data to csv file
+			_csvWriter = new CsvWriter(path, ";");
+			for (int i = 0; i < _members.Count; i++)
+			{
+				_csvWriter.Write(_members.ElementAt(i).Name, _members.ElementAt(i).Email, _members.ElementAt(i).Phone);
+			}
 		}
 
 		private void BtnMainWindow_Clicked(object sender, RoutedEventArgs e)
-		{
+		{    // saves data into csv file
+			_csvWriter.Flush();
 			Button button = sender as Button;
 			rep = Repository.GetInstance();
 			Member selectedCd = (Member)lbxCds.SelectedItem;
