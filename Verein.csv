@@ -1,0 +1,15 @@
+INDEX;FIRSTNAME;LASTNAME;EMAIL;PHONE;BIRTHDAY
+1;SMITH;Thompson;s.thompson@yahoo.com;0732/7369-0;20.12.1966
+2;ALLEN;Brown;a.brown@gmail.com;07242/7499;12.03.1969
+3;WARD;Williams;w.williams@liwest.at;0681/7521-11;13.04.1972
+4;JONES;Jones;j.jones@jando.de;;21.12.1980
+5;MARTIN;Garcia;m.garcia@zallando.at;0699/7654;30.03.1984
+6;BLAKE;Miller;b.miller@yahoo.de;0696/7698;31.01.1980
+7;CLARK;Davis;c.davis@google.com;01/7782-7782;26.02.1990
+8;SCOTT;Wilson;s.wilson@gms.at;07788/7788;13.04.2000
+9;KING;Anderson;k.anderson@email.org;;14.06.1970
+10;TURNER;Thomas;t.thomas@gmail.de;02222/7844;17.11.1999
+11;ADAMS;Taylor;a.taylor@blabla.com;0650/7876;19.12.1977
+12;JAMES;Moore;j.moore@ink.ca;;22.02.2000
+13;FORD;Jackson;f.jackson@mig.ru;;31.03.1983
+14;MILLER;Martin;m.martin@mama.it;;31.05.1996
