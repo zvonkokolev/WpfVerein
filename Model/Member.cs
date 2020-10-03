@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 
@@ -7,6 +8,8 @@ namespace WpfVerein.Model
 {
 	public class Member
 	{
+		[Key]
+		public int Id { get; set; }
 		public int? Index { get; set; }
 		public string Firstname { get; set; }
 		public string Lastname { get; set; }

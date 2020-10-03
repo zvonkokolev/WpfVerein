@@ -68,10 +68,29 @@ namespace WpfVerein.CRUD
 				_csvWriter = new CsvWriter(path, ";");
 				_csvWriter.Write(_line.ElementAt(0), _line.ElementAt(1), _line.ElementAt(2));
 				_csvWriter.Flush();
+
+				// Database--------------------------------------
+				using (var db = new ClubMemberContext())
+				{
+					// Create
+					MessageBox.Show("Ein neues Mitglied einfügen");
+					db.Add(newCd);
+					db.SaveChanges();
+					//---------------------------------------------
+				}
 			}
 			else
 			{
 				Repository.GetInstance().UpdateCd(_memberToEdit, newCd);
+				// Database------------------------------------
+				using (var db = new ClubMemberContext())
+				{
+					// Update
+					MessageBox.Show("Mitglied aktualisieren");
+					db.Update(_memberToEdit);
+					db.SaveChanges();
+				}
+				//----------------------------------------------
 			}
 			Close();
 		}
